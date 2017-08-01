@@ -245,7 +245,7 @@ class Resque_Worker
 			$job->perform();
 		}
 		catch (Throwable $t) {
-			$this->logger->log(Psr\Log\LogLevel::CRITICAL, '{job} has failed {stack}', array('job' => $job, 'stack' => $t, 'exception' => $t));
+			$this->logger->log(Psr\Log\LogLevel::CRITICAL, '{job} has failed', array('job' => $job, 'trace' => $t->getTraceAsString(), 'exception' => $t));
 			$job->fail($t);
 			return;
 		}
