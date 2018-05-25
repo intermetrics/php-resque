@@ -179,6 +179,7 @@ class Resque_Job
 		$this->instance->job = $this;
 		$this->instance->args = $this->getArguments();
 		$this->instance->queue = $this->queue;
+        $this->instance->id = $this->payload['id'];
 		return $this->instance;
 	}
 
